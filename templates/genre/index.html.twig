@@ -13,8 +13,6 @@
                 <th>Nom</th>
                 <th>Description</th>
                 <th>Actif</th>
-                <th>CreatedAt</th>
-                <th>UpdateAt</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -26,8 +24,6 @@
                 <td>{{ genre.nom }}</td>
                 <td>{{ genre.description }}</td>
                 <td>{{ genre.actif ? 'Yes' : 'No' }}</td>
-                <td>{{ genre.createdAt ? genre.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ genre.updateAt ? genre.updateAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('app_genre_show', {'id': genre.id}) }}">show</a>
                     <a href="{{ path('app_genre_edit', {'id': genre.id}) }}">edit</a>

@@ -10,7 +10,9 @@
             <tr>
                 <th>Id</th>
                 <th>Titre</th>
+                <th>Genre</th>
                 <th>Developpeur</th>
+                <th>editeur</th>
                 <th>DateSortie</th>
                 <th>Prix</th>
                 <th>Description</th>
@@ -23,7 +25,9 @@
             <tr>
                 <td>{{ jeu_video.id }}</td>
                 <td>{{ jeu_video.titre }}</td>
+                <td>{{ jeu_video.genre.nom }}</td>
                 <td>{{ jeu_video.developpeur }}</td>
+                <td>{{ jeu_video.editeur.nom }}</td>
                 <td>{{ jeu_video.dateSortie ? jeu_video.dateSortie|date('d/m/Y') : '' }}</td>
                 <td>{{ jeu_video.prix }}</td>
                 <td>{{ jeu_video.description }}</td>
