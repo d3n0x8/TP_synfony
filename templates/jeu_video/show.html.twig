@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}JeuVideo{% endblock %}
+
+{% block body %}
+    <h1>JeuVideo</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ jeu_video.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ jeu_video.titre }}</td>
+            </tr>
+            <tr>
+                <th>Developpeur</th>
+                <td>{{ jeu_video.developpeur }}</td>
+            </tr>
+            <tr>
+                <th>DateSortie</th>
+                <td>{{ jeu_video.dateSortie ? jeu_video.dateSortie|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ jeu_video.prix }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ jeu_video.description }}</td>
+            </tr>
+            <tr>
+                <th>ImageUrl</th>
+                <td>{{ jeu_video.imageUrl }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_jeu_video_index') }}">back to list</a>
+
+    <a href="{{ path('app_jeu_video_edit', {'id': jeu_video.id}) }}">edit</a>
+
+    {{ include('jeu_video/_delete_form.html.twig') }}
+{% endblock %}

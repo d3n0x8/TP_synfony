@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ project_name }}</title>
+</head>
+<body>
+    <header>
+        <h1>{{ project_name }}</h1>
+    </header>
+    
+    <main>
+        <section>
+            <h2>Informations du binôme</h2>
+            <ul>
+                {% for student in students %}
+                    <li>{{ student.firstname }} {{ student.lastname }}</li>
+                {% endfor %}
+            </ul>
+            <p><strong>Groupe de TP :</strong> {{ group }}</p>
+        </section>
+        
+        <section>
+            <h2>Navigation</h2>
+            <ul>
+                <li><a href="{{ path('lucky_number') }}">Page Lucky Number</a></li>
+            </ul>
+        </section>
+        
+        <section>
+            <h2>Contenu de la page</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eu quam varius, iaculis nibh in, tempor mauris. Nunc eiusmod elit nulla, id pharetra nulla scelerisque vitae.</p>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; {{ "now"|date("Y") }} - {{ project_name }}</p>
+    </footer>
+</body>
+</html>
