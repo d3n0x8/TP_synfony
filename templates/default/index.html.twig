@@ -4,12 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ project_name }}</title>
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/button.css') }}">
+    {% endblock %}
 </head>
 <body>
-    <header>
-        <h1>{{ project_name }}</h1>
+    <header id="app-header">
+        <h1>Mon Projet Symfony - Gestion des Jeux Vidéo</h1>
     </header>
     
+    <nav id="main-menu">
+        {% if knp_menu_render('main') is not empty %}
+            {{ knp_menu_render('main') }}
+        {% else %}
+            <p>Menu en cours de construction...</p>
+        {% endif %}
+    </nav>
+
     <main>
         <section>
             <h2>Informations du binôme</h2>
@@ -20,18 +33,7 @@
             </ul>
             <p><strong>Groupe de TP :</strong> {{ group }}</p>
         </section>
-        
-        <section>
-            <h2>Navigation</h2>
-            <ul>
-                <li><a href="{{ path('lucky_number') }}">Page Lucky Number</a></li>
-            </ul>
-        </section>
-        
-        <section>
-            <h2>Contenu de la page</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eu quam varius, iaculis nibh in, tempor mauris. Nunc eiusmod elit nulla, id pharetra nulla scelerisque vitae.</p>
-        </section>
+
     </main>
     
     <footer>

@@ -17,9 +17,6 @@ class Genre
     private ?int $id = null;
 
     #[ORM\Column(length: 100, nullable: true)]
-    private ?string $npm = null;
-
-    #[ORM\Column(length: 100, nullable: true)]
     private ?string $nom = null;
 
     #[ORM\Column(type: Types::TEXT)]
@@ -43,23 +40,13 @@ class Genre
     public function __construct()
     {
         $this->jeuVideos = new ArrayCollection();
+        $this->createdAt = new \DateTimeImmutable();
+        $this->updateAt = new \DateTimeImmutable();
     }
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getNpm(): ?string
-    {
-        return $this->npm;
-    }
-
-    public function setNpm(?string $npm): static
-    {
-        $this->npm = $npm;
-
-        return $this;
     }
 
     public function getNom(): ?string

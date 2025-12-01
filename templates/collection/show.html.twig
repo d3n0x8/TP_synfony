@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Collection de {{ utilisateur.person }} {{ utilisateur.nom }}</h1>
+    
+    {% for collect in collects %}
+        <div class="game-card">
+            <h2>{{ collect.jeuVideo.titre }}</h2>
+            <p>Statut : {{ collect.statut.getLabel() }}</p> {# Utilisation de la méthode de l'Enum #}
+            
+            {# Calcul différence prix #}
+            {% set prixJeu = collect.jeuVideo.prix %}
+            {% set prixAchat = collect.prixAchat %}
+            
+            <p>Prix officiel : {{ prixJeu }} €</p>
+            <p>
+                Acheté : {{ prixAchat }} €
+                {% if prixAchat and prixJeu %}
+                    {% set diff = prixAchat - prixJeu %}
+                    <span style="color: {{ diff < 0 ? 'green' : 'red' }}">
+                        (Différence : {{ diff }} €)
+                    </span>
+                {% endif %}
+            </p>
+        </div>
+        <hr>
+    {% endfor %}
+{% endblock %}

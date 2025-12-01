@@ -1,15 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Genre index{% endblock %}
+{% block title %}Genres de jeu vidéo{% endblock %}
+
+{% block breadcrumb %}
+    {{ knp_menu_render(breadcrumb) }}
+{% endblock %}
+
 
 {% block body %}
-    <h1>Genre index</h1>
+    <h1>Genres de jeu vidéo</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Npm</th>
                 <th>Nom</th>
                 <th>Description</th>
                 <th>Actif</th>
@@ -20,22 +24,21 @@
         {% for genre in genres %}
             <tr>
                 <td>{{ genre.id }}</td>
-                <td>{{ genre.npm }}</td>
                 <td>{{ genre.nom }}</td>
                 <td>{{ genre.description }}</td>
-                <td>{{ genre.actif ? 'Yes' : 'No' }}</td>
+                <td>{{ genre.actif ? 'Oui' : 'Non' }}</td>
                 <td>
-                    <a href="{{ path('app_genre_show', {'id': genre.id}) }}">show</a>
-                    <a href="{{ path('app_genre_edit', {'id': genre.id}) }}">edit</a>
+                    <a href="{{ path('app_genre_show', {'id': genre.id}) }}">Consulter</a>
+                    <a href="{{ path('app_genre_edit', {'id': genre.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">no records found</td>
+                <td colspan="8">Pas de genre trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_genre_new') }}">Create new</a>
+    <a href="{{ path('app_genre_new') }}">Ajouter un genre</a>
 {% endblock %}

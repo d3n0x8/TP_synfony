@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Gestion des collections</h1>
+<div class="row">
+    {% for user in utilisateurs %}
+        <div class="card">
+            <h3>{{ user.pseudo }} ({{ user.person }} {{ user.nom }})</h3>
+            <p>{{ user.collects|length }} jeux dans la collection</p>
+            <a href="{{ path('app_collection_show', {id: user.id}) }}" class="btn">VOIR LES JEUX</a>
+        </div>
+    {% else %}
+        <p>Aucun utilisateur.</p>
+    {% endfor %}
+</div>
+{% endblock %}

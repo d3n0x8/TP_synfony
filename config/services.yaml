@@ -16,5 +16,9 @@ services:
     App\:
         resource: '../src/'
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+    # Déclaration du Menu Builder pour KnpMenuBundle
+    App\Menu\MenuBuilder:
+        arguments: ['@knp_menu.factory'] # Injecte la FactoryInterface
+        tags:
+            # 1. TAG pour le menu principal : nous rendons la méthode explicite
+            - { name: knp_menu.menu_builder, alias: main, method: createMainMenu }            # 2. TAG pour le fil d'Ariane : la méthode était déjà explicite

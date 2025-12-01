@@ -1,0 +1,183 @@
+/* ==================================== */
+/* 1. COULEURS & STYLES GENERAUX        */
+/* ==================================== */
+
+:root {
+    /* Couleurs principales inspirées des captures d'écran du TP */
+    --color-primary: #8a2be2; /* Violet (Principal) */
+    --color-secondary: #ff8c00; /* Orange (Actif/Highlight) */
+    --color-text: #333;
+    --color-background-light: #f5f5f5;
+    --color-border: #ccc;
+    --color-success: #28a745;
+    --color-danger: #dc3545;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: var(--color-text);
+    background-color: var(--color-background-light);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+h1 {
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-secondary);
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+/* ==================================== */
+/* 2. STRUCTURE (HEADER, FOOTER, MAIN)  */
+/* ==================================== */
+
+#app-header {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 5px solid var(--color-secondary);
+}
+
+#app-header h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+#app-content-wrapper {
+    padding: 20px;
+}
+
+#page-content {
+    margin-top: 20px;
+}
+
+#app-footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.8em;
+    margin-top: 40px;
+}
+
+/* ==================================== */
+/* 3. STYLES DES TABLES                 */
+/* ==================================== */
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.table th,
+.table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.table thead th {
+    background-color: var(--color-background-light);
+    color: var(--color-text);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.table tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+/* Style des liens dans les tables */
+.table td a {
+    color: var(--color-secondary);
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.table td a:hover {
+    text-decoration: underline;
+}
+
+/* ==================================== */
+/* 4. MENU PRINCIPAL & BREADCRUMB       */
+/* ==================================== */
+
+#main-menu {
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px 20px 0 20px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#main-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#main-menu li {
+    margin-right: 15px;
+}
+
+#main-menu a {
+    display: block;
+    padding: 10px 15px;
+    background-color: var(--color-primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#main-menu a:hover {
+    background-color: #6a1ba9;
+}
+
+/* Élément actif (courant) */
+#main-menu .current > a {
+    background-color: var(--color-secondary);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Breadcrumb */
+#breadcrumb-container {
+    padding: 10px 0;
+}
+
+.breadcrumb {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    font-size: 0.9em;
+}
+
+.breadcrumb li {
+    display: inline;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: var(--color-primary);
+}
+
+.breadcrumb > li:not(:last-child)::after {
+    content: " > ";
+    padding: 0 5px;
+    color: #666;
+}
+
+.breadcrumb .current {
+    font-weight: bold;
+    color: var(--color-secondary);
+}

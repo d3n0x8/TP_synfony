@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\JeuVideo;
 use App\Form\JeuVideoType;
+use App\Menu\MenuBuilder;
 use App\Repository\JeuVideoRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,16 +16,23 @@ use Symfony\Component\Routing\Attribute\Route;
 final class JeuVideoController extends AbstractController
 {
     #[Route(name: 'app_jeu_video_index', methods: ['GET'])]
-    public function index(JeuVideoRepository $jeuVideoRepository): Response
+    public function index(JeuVideoRepository $jeuVideoRepository, MenuBuilder $menuBuilder): Response
     {
+        $breadcrumb = $menuBuilder->createBreadcrumbMenu([]);
+        $breadcrumb->addChild('Jeux Vidéo', ['route' => 'app_jeu_video_index']);
         return $this->render('jeu_video/index.html.twig', [
             'jeu_videos' => $jeuVideoRepository->findAll(),
+            'breadcrumb' => $breadcrumb,
         ]);
     }
 
     #[Route('/new', name: 'app_jeu_video_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, MenuBuilder $menuBuilder): Response
     {
+        $breadcrumb = $menuBuilder->createBreadcrumbMenu([]);
+        $breadcrumb->addChild('Jeux Vidéo', ['route' => 'app_jeu_video_index']);
+        $breadcrumb->addChild('Créer un nouveau jeu vidéo');
+
         $jeuVideo = new JeuVideo();
         $form = $this->createForm(JeuVideoType::class, $jeuVideo);
         $form->handleRequest($request);
@@ -43,10 +51,15 @@ final class JeuVideoController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_jeu_video_show', methods: ['GET'])]
-    public function show(JeuVideo $jeuVideo): Response
+    public function show(JeuVideo $jeuVideo, MenuBuilder $menuBuilder): Response
     {
+        $breadcrumb = $menuBuilder->createBreadcrumbMenu([]);
+        $breadcrumb->addChild('Jeux Vidéo', ['route' => 'app_jeu_video_index']);
+        $breadcrumb->addChild($jeuVideo->getTitre());
+
         return $this->render('jeu_video/show.html.twig', [
             'jeu_video' => $jeuVideo,
+            'breadcrumb' => $breadcrumb,
         ]);
     }
 
@@ -71,7 +84,7 @@ final class JeuVideoController extends AbstractController
     #[Route('/{id}', name: 'app_jeu_video_delete', methods: ['POST'])]
     public function delete(Request $request, JeuVideo $jeuVideo, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$jeuVideo->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $jeuVideo->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($jeuVideo);
             $entityManager->flush();
         }

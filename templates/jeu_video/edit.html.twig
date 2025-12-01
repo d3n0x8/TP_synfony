@@ -1,13 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit JeuVideo{% endblock %}
+{% block title %}Modifier le jeu{% endblock %}
 
 {% block body %}
-    <h1>Edit JeuVideo</h1>
+    <h1>Modifier le jeu video</h1>
 
-    {{ include('jeu_video/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('jeu_video/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
-    <a href="{{ path('app_jeu_video_index') }}">back to list</a>
-
-    {{ include('jeu_video/_delete_form.html.twig') }}
+    <div class="page-actions">
+        {{ include('_back_button.html.twig', { 'href': path('app_jeu_video_index'), 'label': 'Revenir à la liste', 'classes': 'btn-secondary' }) }}
+        {{ include('jeu_video/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

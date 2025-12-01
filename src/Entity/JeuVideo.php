@@ -5,6 +5,9 @@ namespace App\Entity;
 use App\Repository\JeuVideoRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use App\Entity\Collect;
 
 #[ORM\Entity(repositoryClass: JeuVideoRepository::class)]
 class JeuVideo
@@ -39,6 +42,14 @@ class JeuVideo
     #[ORM\ManyToOne(inversedBy: 'jeuVideos')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Genre $genre = null;
+    #[ORM\OneToMany(mappedBy: 'jeuVideo', targetEntity: Collect::class, orphanRemoval: true)]
+    private Collection $collects;
+    public function __construct()
+    {
+        $this->collects = new ArrayCollection();
+        $this->createdAt = new \DateTimeImmutable();
+        $this->updateAt = new \DateTimeImmutable();
+    }
 
     public function getId(): ?int
     {
@@ -137,6 +148,36 @@ class JeuVideo
     public function setGenre(?Genre $genre): static
     {
         $this->genre = $genre;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Collect>
+     */
+    public function getCollects(): Collection
+    {
+        return $this->collects;
+    }
+
+    public function addCollect(Collect $collect): static
+    {
+        if (!$this->collects->contains($collect)) {
+            $this->collects->add($collect);
+            $collect->setJeuVideo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCollect(Collect $collect): static
+    {
+        if ($this->collects->removeElement($collect)) {
+            // set the owning side to null (unless already changed)
+            if ($collect->getJeuVideo() === $this) {
+                $collect->setJeuVideo(null);
+            }
+        }
 
         return $this;
     }

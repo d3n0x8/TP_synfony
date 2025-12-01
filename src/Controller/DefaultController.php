@@ -15,6 +15,7 @@ class DefaultController extends AbstractController
             'project_name' => 'Mon Projet Symfony',
             'students' => [
                 ['firstname' => 'Andréas', 'lastname' => 'Rey Malissein'],
+                ['firstname' => 'Joachim', 'lastname' => 'Fevre'],
             ],
             'group' => 'G8A',
         ]);

@@ -1,9 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Editeur index{% endblock %}
+{% block title %}Editeurs de jeu vidéo{% endblock %}
+
+{% block breadcrumb %}
+    {{ knp_menu_render(breadcrumb) }}
+{% endblock %}
+
 
 {% block body %}
-    <h1>Editeur index</h1>
+    <h1>Editeurs de jeu vidéo</h1>
 
     <table class="table">
         <thead>
@@ -29,17 +34,17 @@
                 <td>{{ editeur.createdAt ? editeur.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ editeur.updateAt ? editeur.updateAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_editeur_show', {'id': editeur.id}) }}">show</a>
-                    <a href="{{ path('app_editeur_edit', {'id': editeur.id}) }}">edit</a>
+                    <a href="{{ path('app_editeur_show', {'id': editeur.id}) }}">Consulter</a>
+                    <a href="{{ path('app_editeur_edit', {'id': editeur.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">no records found</td>
+                <td colspan="8">Pas d'éditeur trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_editeur_new') }}">Create new</a>
+    <a href="{{ path('app_editeur_new') }}">Ajouter un editeur</a>
 {% endblock %}

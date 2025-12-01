@@ -1,9 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}JeuVideo index{% endblock %}
+{% block title %}Liste de jeu vidéo{% endblock %}
+
+{% block breadcrumb %}
+    {{ knp_menu_render(breadcrumb) }}
+{% endblock %}
 
 {% block body %}
-    <h1>JeuVideo index</h1>
+    <h1>Liste de jeu vidéo</h1>
 
     <table class="table">
         <thead>
@@ -12,12 +16,12 @@
                 <th>Titre</th>
                 <th>Genre</th>
                 <th>Developpeur</th>
-                <th>editeur</th>
-                <th>DateSortie</th>
+                <th>Editeur</th>
+                <th>Date de sortie</th>
                 <th>Prix</th>
                 <th>Description</th>
-                <th>ImageUrl</th>
-                <th>actions</th>
+                <th>Utilisateurs possédant ce jeu</th> 
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -29,21 +33,34 @@
                 <td>{{ jeu_video.developpeur }}</td>
                 <td>{{ jeu_video.editeur.nom }}</td>
                 <td>{{ jeu_video.dateSortie ? jeu_video.dateSortie|date('d/m/Y') : '' }}</td>
-                <td>{{ jeu_video.prix }}</td>
+                <td>{{ jeu_video.prix|number_format(2, ',', ' ') }} €</td>
                 <td>{{ jeu_video.description }}</td>
-                <td>{{ jeu_video.imageUrl }}</td>
+                
                 <td>
-                    <a href="{{ path('app_jeu_video_show', {'id': jeu_video.id}) }}">show</a>
-                    <a href="{{ path('app_jeu_video_edit', {'id': jeu_video.id}) }}">edit</a>
+                    <ul>
+                    {% for collect in jeu_video.collects %}
+                        <li>
+                            {{ collect.utilisateur.pseudo }} 
+                            ({{ collect.statut.getLabel() }})
+                        </li>
+                    {% else %}
+                        <li>Personne</li>
+                    {% endfor %}
+                    </ul>
+                </td>
+
+                <td>
+                    <a href="{{ path('app_jeu_video_show', {'id': jeu_video.id}) }}">Consulter</a>
+                    <a href="{{ path('app_jeu_video_edit', {'id': jeu_video.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">no records found</td>
+                <td colspan="10">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_jeu_video_new') }}">Create new</a>
+    <a href="{{ path('app_jeu_video_new') }}">Ajouter un jeu</a>
 {% endblock %}
