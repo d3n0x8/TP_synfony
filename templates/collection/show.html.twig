@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block breadcrumb %}
+    {{ knp_menu_render(breadcrumb) }}
+{% endblock %}
+
 {% block body %}
     <h1>Collection de {{ utilisateur.person }} {{ utilisateur.nom }}</h1>
     

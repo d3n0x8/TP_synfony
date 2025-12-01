@@ -23,8 +23,7 @@ body {
 }
 
 h1 {
-    color: var(--color-primary);
-    border-bottom: 2px solid var(--color-secondary);
+    color: black;
     padding-bottom: 5px;
     margin-bottom: 20px;
 }
@@ -37,8 +36,7 @@ h1 {
     background-color: var(--color-primary);
     color: white;
     padding: 20px;
-    text-align: center;
-    border-bottom: 5px solid var(--color-secondary);
+    text-align: center
 }
 
 #app-header h1 {
