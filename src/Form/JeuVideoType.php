@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Editeur;
 use App\Entity\Genre;
+use App\Repository\GenreRepository;
 use App\Entity\JeuVideo;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -28,6 +29,12 @@ class JeuVideoType extends AbstractType
             ->add('genre', EntityType::class, [
                 'class' => Genre::class,
                 'choice_label' => 'nom',
+                'query_builder' => function (GenreRepository $gr) {
+                    return $gr->createQueryBuilder('g')
+                        ->andWhere('g.actif = :actif')
+                        ->setParameter('actif', true)
+                        ->orderBy('g.nom', 'ASC');
+                },
             ])
         ;
     }
