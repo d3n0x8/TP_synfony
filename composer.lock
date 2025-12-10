@@ -1799,16 +1799,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v7.3.6",
+            "version": "v7.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "c28ad91448f86c5f6d9d2c70f0cf68bf135f252a"
+                "reference": "6d0d25cc1138bb7bab0685fbe4184e6289914406"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/c28ad91448f86c5f6d9d2c70f0cf68bf135f252a",
-                "reference": "c28ad91448f86c5f6d9d2c70f0cf68bf135f252a",
+                "url": "https://api.github.com/repos/symfony/console/zipball/6d0d25cc1138bb7bab0685fbe4184e6289914406",
+                "reference": "6d0d25cc1138bb7bab0685fbe4184e6289914406",
                 "shasum": ""
             },
             "require": {
@@ -1873,7 +1873,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v7.3.6"
+                "source": "https://github.com/symfony/console/tree/v7.3.8"
             },
             "funding": [
                 {
@@ -1893,7 +1893,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-11-04T01:21:42+00:00"
+            "time": "2025-12-05T13:52:21+00:00"
         },
         {
             "name": "symfony/dependency-injection",
@@ -5960,5 +5960,5 @@
         "ext-iconv": "*"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.9.0"
+    "plugin-api-version": "2.6.0"
 }
