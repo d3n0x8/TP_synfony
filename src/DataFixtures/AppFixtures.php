@@ -11,26 +11,6 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $genreAction = new Genre();
-        $genreAction->setNom('Action');
-        $genreAction->setDescription('Jeux d\'action, de combat');
-        $manager->persist($genreAction);
-
-        $editeurSony = new Editeur();
-        $editeurSony->setNom('Sony Interactive Entertainment');
-        $editeurSony->setPays('Japon');
-        $editeurSony->setSiteWeb('https://www.sie.com');
-        $manager->persist($editeurSony);
-
-        $jeuVideo = new JeuVideo();
-        $jeuVideo->setTitre('The Last of Us Part II');
-        $jeuVideo->setEditeur($editeurSony);
-        $jeuVideo->setGenre($genreAction);
-        $jeuVideo->setDeveloppeur('Naughty Dog');
-        $jeuVideo->setDateSortie(new \DateTime('2020-06-19'));
-        $jeuVideo->setPrix(59.99);
-        $manager->persist($jeuVideo);
-
         $gAction = new Genre();
         $gAction->setNom('Action');
         $gAction->setDescription("Jeux d'action: jeux de plateforme, combat, tir (F¨S, TPS...)");
@@ -94,6 +74,11 @@ class AppFixtures extends Fixture
         $eNintendo->setCreatedAt(new \DateTimeImmutable('now'));
         $manager->persist($eNintendo);
 
+        $editeurSony = new Editeur();
+        $editeurSony->setNom('Sony Interactive Entertainment');
+        $editeurSony->setPays('Japon');
+        $editeurSony->setSiteWeb('https://www.sie.com');
+        $manager->persist($editeurSony);
 
 
 
@@ -176,6 +161,15 @@ class AppFixtures extends Fixture
         $toad->setPrix(39.99);
         $manager->persist($toad);
 
+        $tlou = new JeuVideo();
+        $tlou->setTitre('The Last of Us Part II');
+        $tlou->setEditeur($editeurSony);
+        $tlou->setGenre($gAction);
+        $tlou->setDeveloppeur('Naughty Dog');
+        $tlou->setDateSortie(new \DateTime('2020-06-19'));
+        $tlou->setPrix(59.99);
+        $manager->persist($tlou);
+
         $manager->flush();
         
 
@@ -199,7 +193,7 @@ class AppFixtures extends Fixture
 
         $collection = new Collect();
         $collection->setUtilisateur($user);
-        $collection->setJeuVideo($jeuVideo);
+        $collection->setJeuVideo($smash);
         $collection->setStatut(\App\Enum\StatutJeuEnum::EN_COURS);
         $collection->setPrixAchat(45.00);
         $collection->setCreatedAt(new \DateTimeImmutable());
@@ -208,7 +202,7 @@ class AppFixtures extends Fixture
 
         $collection2 = new Collect();
         $collection2->setUtilisateur($user1);
-        $collection2->setJeuVideo($jeuVideo);
+        $collection2->setJeuVideo($xeno);
         $collection2->setStatut(\App\Enum\StatutJeuEnum::POSSEDE);
         $collection2->setPrixAchat(50.00);
         $collection2->setCreatedAt(new \DateTimeImmutable());
