@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Une erreur est survenue{% endblock %}
+
+{% block body %}
+    <div style="text-align: center; margin-top: 50px;">
+        <h1 style="color: var(--color-danger);">Une erreur est survenue</h1>
+        
+        <p>Le serveur ne répond pas.</p>
+        
+        {% if status_code is defined %}
+            <p>Code erreur : {{ status_code }}</p>
+        {% endif %}
+        
+        <div style="margin-top: 30px;">
+            <a href="{{ path('homepage') }}" class="btn">Retour à l'accueil</a>
+        </div>
+    </div>
+{% endblock %}

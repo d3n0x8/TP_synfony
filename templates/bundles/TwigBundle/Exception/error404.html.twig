@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page non trouvée{% endblock %}
+
+{% block body %}
+    <div style="text-align: center; margin-top: 50px;">
+        <h1 style="color: var(--color-danger);">Erreur 404</h1>
+        <h2>Oups ! Page introuvable.</h2>
+        
+        <p>La page que vous recherchez n'existe pas.</p>
+        
+        <div style="margin-top: 30px;">
+            <a href="{{ path('homepage') }}" class="btn">Retour à l'accueil</a>
+            <a href="{{ path('app_jeu_video_index') }}" class="btn btn-secondary">Voir les jeux</a>
+        </div>
+    </div>
+{% endblock %}

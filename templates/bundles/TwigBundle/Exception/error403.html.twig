@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accès refusé{% endblock %}
+
+{% block body %}
+    <div style="text-align: center; margin-top: 50px;">
+        <h1 style="color: var(--color-danger);">Erreur 403</h1>
+        <h2>Accès Interdit</h2>
+        
+        <p>Vous ne pouvez pas accéder à cette page.</p>
+        
+        <div style="margin-top: 30px;">
+            <a href="{{ path('homepage') }}" class="btn">Retour à l'accueil</a>
+        </div>
+    </div>
+{% endblock %}
