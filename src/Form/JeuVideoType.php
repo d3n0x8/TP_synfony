@@ -23,11 +23,11 @@ class JeuVideoType extends AbstractType
             ->add('imageUrl')
             ->add('editeur', EntityType::class, [
                 'class' => Editeur::class,
-                'choice_label' => 'id',
+                'choice_label' => 'nom',
             ])
             ->add('genre', EntityType::class, [
                 'class' => Genre::class,
-                'choice_label' => 'id',
+                'choice_label' => 'nom',
             ])
         ;
     }
