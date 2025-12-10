@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Collection{% endblock %}
+
+{% block body %}
+    <h1>Add a game to your collection</h1>
+
+    {{ include('collection/_form.html.twig') }}
+
+    <div class="page-actions">
+        <a class="btn btn-secondary" href="{{ path('app_collection_index') }}">Retourner à la liste</a>
+    </div>
+{% endblock %}

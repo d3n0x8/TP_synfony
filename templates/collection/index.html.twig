@@ -12,6 +12,7 @@
             <h3>{{ user.pseudo }} ({{ user.person }} {{ user.nom }})</h3>
             <p>{{ user.collects|length }} jeux dans la collection</p>
             <a href="{{ path('app_collection_show', {id: user.id}) }}" class="btn">VOIR LES JEUX</a>
+            <a href="{{ path('app_collection_add', {id: user.id}) }}" class="btn">AJOUTER UN JEU</a>
         </div>
     {% else %}
         <p>Aucun utilisateur.</p>
