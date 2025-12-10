@@ -11,21 +11,17 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        // Créer les genres
-// Genre ACTION : Jeux d'action, combat
         $genreAction = new Genre();
         $genreAction->setNom('Action');
         $genreAction->setDescription('Jeux d\'action, de combat');
         $manager->persist($genreAction);
-        // …
-// Créer les éditeurs
+
         $editeurSony = new Editeur();
         $editeurSony->setNom('Sony Interactive Entertainment');
         $editeurSony->setPays('Japon');
         $editeurSony->setSiteWeb('https://www.sie.com');
         $manager->persist($editeurSony);
-        // …
-// Créer un jeu exemple
+
         $jeuVideo = new JeuVideo();
         $jeuVideo->setTitre('The Last of Us Part II');
         $jeuVideo->setEditeur($editeurSony);
@@ -34,7 +30,6 @@ class AppFixtures extends Fixture
         $jeuVideo->setDateSortie(new \DateTime('2020-06-19'));
         $jeuVideo->setPrix(59.99);
         $manager->persist($jeuVideo);
-        // ...
 
         $gAction = new Genre();
         $gAction->setNom('Action');
@@ -184,8 +179,6 @@ class AppFixtures extends Fixture
         $manager->flush();
         
 
-
-// Création d'un utilisateur
         $user = new \App\Entity\Utilisateur();
         $user->setNom('Dupont');
         $user->setPerson('Jean');
@@ -203,7 +196,7 @@ class AppFixtures extends Fixture
         $user1->setUpdateAt(new \DateTimeImmutable());
         $manager->persist($user1);
 
-// Ajout d'un jeu dans sa collection
+
         $collection = new Collect();
         $collection->setUtilisateur($user);
         $collection->setJeuVideo($jeuVideo);

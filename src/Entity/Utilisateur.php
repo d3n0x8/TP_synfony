@@ -173,7 +173,6 @@ class Utilisateur
     public function removeCollect(Collect $collect): static
     {
         if ($this->collects->removeElement($collect)) {
-            // set the owning side to null (unless already changed)
             if ($collect->getUtilisateur() === $this) {
                 $collect->setUtilisateur(null);
             }

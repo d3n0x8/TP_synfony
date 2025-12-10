@@ -173,7 +173,6 @@ class JeuVideo
     public function removeCollect(Collect $collect): static
     {
         if ($this->collects->removeElement($collect)) {
-            // set the owning side to null (unless already changed)
             if ($collect->getJeuVideo() === $this) {
                 $collect->setJeuVideo(null);
             }

@@ -130,7 +130,6 @@ class Genre
     public function removeJeuVideo(JeuVideo $jeuVideo): static
     {
         if ($this->jeuVideos->removeElement($jeuVideo)) {
-            // set the owning side to null (unless already changed)
             if ($jeuVideo->getGenre() === $this) {
                 $jeuVideo->setGenre(null);
             }

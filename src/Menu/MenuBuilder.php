@@ -30,10 +30,10 @@ class MenuBuilder
     public function createMainMenu(array $options): ItemInterface
     {
         $menu = $this->factory->createItem('root');
-        $menu->setChildrenAttributes(['class' => 'navbar-nav']); // Ajoute des classes pour le CSS (ex: Bootstrap)
+        $menu->setChildrenAttributes(['class' => 'navbar-nav']); 
 
         $menu->addChild('Accueil', ['route' => 'homepage'])
-            ->setExtra('icon', 'fas fa-home'); // Ajout d'une icône (si vous utilisez Font Awesome)
+            ->setExtra('icon', 'fas fa-home'); 
 
         $menu->addChild('Jeux Vidéo', ['route' => 'app_jeu_video_index'])
             ->setExtra('icon', 'fas fa-gamepad');
